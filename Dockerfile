@@ -1,13 +1,4 @@
-FROM ubuntu:14.04
+FROM gcr.io/google-samples/nfs-server:1.1
 MAINTAINER Wodby <admin@wodby.com>
 
-RUN apt-get update && apt-get install -y nfs-kernel-server
-
-RUN mkdir -p /exports
-WORKDIR /exports
-VOLUME /exports
-
-EXPOSE 111/udp 2049/tcp
-
-COPY docker-entrypoint.sh /usr/local/bin/
-CMD "docker-entrypoint.sh"
+COPY run_nfs.sh /usr/local/bin/
