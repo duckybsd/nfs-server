@@ -21,9 +21,6 @@ function start()
     for i in "$@"; do
         # fsid=0: needed for NFSv4
         echo "$i *(rw,sync,fsid=0,insecure,no_root_squash)" >> /etc/exports
-        # move index.html to here
-        /bin/cp /tmp/index.html $i/
-        chmod 644 $i/index.html
         echo "Serving $i"
     done
 
